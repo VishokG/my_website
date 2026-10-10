@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f5f7">
+<meta name="description" content="Vishok G — Software Developer building thoughtful, reliable software.">
+<title>Vishok G — Software Developer</title>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --surface: rgba(255,255,255,.78);
+    --card: #fff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --line: rgba(0,0,0,.08);
+    --blue: #06c;
+    --radius: 28px;
+    --shadow: 0 12px 40px rgba(0,0,0,.045);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: -.022em; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .nav-wrap { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(180%) blur(22px); background: rgba(245,245,247,.82); border-bottom: 1px solid rgba(0,0,0,.06); }
+  nav { max-width: 1120px; margin: auto; min-height: 54px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand { color: var(--text); font-weight: 650; font-size: 15px; letter-spacing: -.04em; }
+  .nav-links { display: flex; gap: 25px; align-items: center; font-size: 12px; }
+  .nav-links a { color: #424245; }
+  .nav-cta { background: var(--text); color: white !important; padding: 8px 14px; border-radius: 99px; }
+  main { max-width: 1120px; padding: 0 24px; margin: 0 auto; }
+  .hero { padding: 104px 0 76px; text-align: center; }
+  .eyebrow { color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { font-size: clamp(54px, 9vw, 104px); letter-spacing: -.075em; line-height: .96; margin: 20px 0 22px; font-weight: 700; }
+  .gradient { background: linear-gradient(105deg, #111 15%, #6e6e73 58%, #a1a1a6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: clamp(18px, 2.3vw, 24px); line-height: 1.45; letter-spacing: -.035em; }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+  .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 99px; padding: 12px 19px; font-size: 14px; font-weight: 600; transition: transform .2s, background .2s; }
+  .button:hover { transform: translateY(-2px); text-decoration: none; }
+  .button.primary { background: var(--blue); color: white; }
+  .button.secondary { color: var(--blue); border: 1px solid rgba(0,102,204,.28); background: rgba(255,255,255,.45); }
+  .hero-panel { margin: 0 auto; max-width: 920px; border-radius: 36px; padding: 38px; min-height: 235px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 32px; color: #f5f5f7; background: radial-gradient(ellipse at 80% 20%, rgba(76,145,255,.55), transparent 34%), radial-gradient(ellipse at 18% 90%, rgba(119,82,255,.38), transparent 34%), linear-gradient(135deg, #202127, #101014 70%); box-shadow: 0 24px 70px rgba(0,0,0,.12); overflow: hidden; }
+  .panel-copy { text-align: left; }
+  .panel-copy .small { color: #a1a1a6; font-size: 13px; }
+  .panel-copy h2 { font-size: clamp(27px, 4vw, 42px); line-height: 1.08; letter-spacing: -.06em; margin: 12px 0; }
+  .panel-copy p { color: #c5c5ca; line-height: 1.55; margin: 0; font-size: 15px; max-width: 440px; }
+  .orbital { min-height: 150px; display: grid; place-items: center; position: relative; }
+  .orbital:before, .orbital:after { content: ""; position: absolute; width: 160px; height: 160px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; transform: scaleX(1.5) rotate(-28deg); }
+  .orbital:after { transform: scaleX(1.5) rotate(35deg); border-color: rgba(105,170,255,.55); }
+  .orbital-core { width: 84px; height: 84px; border-radius: 26px; display: grid; place-items: center; font-size: 36px; font-weight: 650; color: white; background: linear-gradient(145deg, #78b4ff, #4d61de 55%, #7148bd); box-shadow: 0 0 60px rgba(85,127,255,.55); z-index: 1; }
+  section { padding: 82px 0 12px; }
+  .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+  .section-heading h2 { margin: 0; font-size: clamp(34px, 5vw, 54px); letter-spacing: -.065em; line-height: 1; }
+  .section-heading p { color: var(--muted); margin: 0; max-width: 380px; line-height: 1.5; font-size: 15px; }
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+  .card { background: var(--card); border: 1px solid rgba(0,0,0,.035); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+  .about-card { grid-column: span 7; min-height: 260px; }
+  .skills-card { grid-column: span 5; }
+  .card-kicker { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 650; }
+  .card h3 { font-size: 25px; letter-spacing: -.05em; margin: 14px 0 12px; }
+  .card p { color: #515154; line-height: 1.65; margin: 0; font-size: 15px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chip { font-size: 12px; font-weight: 550; background: #f5f5f7; color: #424245; padding: 9px 12px; border-radius: 99px; }
+  .timeline { display: grid; gap: 14px; }
+  .job { grid-column: span 12; display: grid; grid-template-columns: 180px 1fr; gap: 26px; }
+  .job-date { color: var(--muted); font-size: 13px; line-height: 1.6; padding-top: 3px; }
+  .job h3 { margin: 0 0 5px; font-size: 23px; }
+  .job .role { color: var(--muted); margin-bottom: 18px; font-size: 14px; }
+  .job p { margin: 0 0 12px; }
+  .job ul { margin: 0; padding-left: 18px; color: #515154; line-height: 1.65; font-size: 14px; }
+  .job li + li { margin-top: 6px; }
+  .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .project { padding: 0; overflow: hidden; }
+  .project-top { min-height: 130px; padding: 25px; display: flex; align-items: end; background: linear-gradient(145deg, #e8f1ff, #f7f7f9 70%); }
+  .project:nth-child(2) .project-top { background: linear-gradient(145deg, #e8e5ff, #f8f7fb); }
+  .project:nth-child(3) .project-top { background: linear-gradient(145deg, #e1f6ed, #f7faf8); }
+  .project-symbol { width: 54px; height: 54px; border-radius: 17px; display: grid; place-items: center; background: rgba(255,255,255,.85); font-size: 25px; box-shadow: 0 6px 18px rgba(0,0,0,.05); }
+  .project-body { padding: 25px; }
+  .project h3 { font-size: 21px; line-height: 1.15; }
+  .project .chips { margin-top: 17px; }
+  .project .chip { background: #f5f5f7; }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .edu { min-height: 155px; }
+  .edu .year { color: var(--muted); font-size: 13px; }
+  .edu h3 { margin-top: 12px; }
+  .cert-list { display: grid; gap: 12px; margin-top: 18px; }
+  .cert { display: flex; align-items: start; gap: 12px; color: #424245; font-size: 14px; line-height: 1.45; }
+  .check { color: #248a3d; font-size: 17px; }
+  .contact { padding-bottom: 80px; }
+  .contact-panel { border-radius: 34px; padding: clamp(30px, 6vw, 64px); text-align: center; background: #fff; box-shadow: var(--shadow); }
+  .contact-panel h2 { font-size: clamp(38px, 6vw, 68px); line-height: 1; letter-spacing: -.07em; margin: 15px 0; }
+  .contact-panel p { color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.55; }
+  .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 13px; margin-top: 25px; }
+  footer { max-width: 1120px; margin: auto; padding: 20px 24px 34px; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } * { transition-duration: .01ms !important; } }
+  @media (max-width: 760px) {
+    nav { padding: 0 18px; } .nav-links { gap: 14px; } .nav-links a:not(.nav-cta) { display: none; }
+    main { padding: 0 17px; } .hero { padding: 76px 0 52px; } .hero-panel { grid-template-columns: 1fr; padding: 30px; gap: 8px; } .orbital { min-height: 140px; }
+    section { padding-top: 65px; } .section-heading { align-items: start; flex-direction: column; }
+    .about-card, .skills-card { grid-column: span 12; } .job { grid-template-columns: 1fr; gap: 10px; } .project-grid, .edu-grid { grid-template-columns: 1fr; }
+    .card { padding: 23px; } footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-wrap">
+  <nav aria-label="Main navigation">
+    <a class="brand" href="#top">Vishok G<span style="color:#06c">.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </div>
+  </nav>
+</div>
+<main id="top">
+  <header class="hero">
+    <div class="eyebrow">Software Developer · Bengaluru, India</div>
+    <h1><span class="gradient">Hello, I’m Vishok.</span></h1>
+    <p>I build thoughtful software experiences—from dependable backend systems to polished, practical products that solve real problems.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+      <a class="button secondary" href="mailto:vishokprasad27@gmail.com">Contact me</a>
+    </div>
+  </header>
+
+  <div class="hero-panel reveal">
+    <div class="panel-copy">
+      <div class="small">A little about how I work</div>
+      <h2>Complex problems.<br>Clear solutions.</h2>
+      <p>Full-stack experience, a backend-first mindset, and a focus on making systems useful, secure, and easier to work with.</p>
+    </div>
+    <div class="orbital" aria-hidden="true"><div class="orbital-core">V</div></div>
+  </div>
+
+  <section id="about">
+    <div class="section-heading reveal">
+      <h2>Designed to work.<br>Built to last.</h2>
+      <p>I’m a software developer with experience across product development, APIs, databases, integrations, and analytics.</p>
+    </div>
+    <div class="grid">
+      <article class="card about-card reveal">
+        <div class="card-kicker">About me</div>
+        <h3>From the data layer to the user experience.</h3>
+        <p>My work has included financial summaries and reporting, authentication, real-time applications, workflow design, and customer onboarding. I enjoy connecting the pieces—understanding the problem, designing the system, and delivering something people can rely on.</p>
+      </article>
+      <article class="card skills-card reveal">
+        <div class="card-kicker">Core toolkit</div>
+        <h3>Tools I work with</h3>
+        <p>Technologies and strengths highlighted in my experience.</p>
+        <div class="chips">
+          <span class="chip">NestJS</span><span class="chip">React</span><span class="chip">Express</span><span class="chip">PostgreSQL</span><span class="chip">SQL Server</span><span class="chip">Apache Kafka</span><span class="chip">REST APIs</span><span class="chip">WebSockets</span><span class="chip">Database Design</span><span class="chip">Redux</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-heading reveal">
+      <h2>Experience.</h2>
+      <p>Teams, products, and systems I’ve helped bring to life.</p>
+    </div>
+    <div class="timeline">
+      <article class="card job reveal">
+        <div class="job-date">September 2025 — Present<br>Bengaluru, India</div>
+        <div>
+          <h3>Mercanis</h3><div class="role">Software Development Engineer</div>
+          <p>Working as a Software Development Engineer. The supplied profile does not specify project details for this role.</p>
+        </div>
+      </article>
+      <article class="card job reveal">
+        <div class="job-date">October 2024 — August 2025<br>11 months</div>
+        <div>
+          <h3>Numadic</h3><div class="role">Full Stack Developer</div>
+          <p>Worked across bookkeeping, parking management, and marketplace products.</p>
+          <ul>
+            <li><strong>Fuel station bookkeeping:</strong> built credit tracking for fuel loans and discount settings, developed SQL reports for financial summaries, transactions, and attendance, and led a four-person team through a design overhaul.</li>
+            <li><strong>Bank parking management:</strong> developed a full-stack solution with WebSockets and REST APIs; designed the database, integrated Active Directory authentication via LDAP and OTP through banking servers, and built SQL heat-map analytics.</li>
+            <li><strong>Cosplay P2P marketplace:</strong> built server-side systems with NestJS and PostgreSQL, Firebase notifications, Stripe payments, complex order workflows, and S3-based media uploads with an interactive feed.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card job reveal">
+        <div class="job-date">August 2023 — October 2024<br>1 year 3 months</div>
+        <div>
+          <h3>Numadic</h3><div class="role">Junior Frontend Engineer</div>
+          <ul>
+            <li>Created a dashboard flow to onboard bookkeeping customers without affecting the FasTag Fuel flow.</li>
+            <li>Built and integrated APIs for customer creation, activation, approval-condition changes, and manager lookup or creation for fuel station outlets.</li>
+            <li>Managed application state using Redux.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card job reveal">
+        <div class="job-date">December 2021 — July 2023<br>Bengaluru, India</div>
+        <div><h3>Cognizant</h3><div class="role">Programming Analyst</div><p>Worked as a Programming Analyst.</p></div>
+      </article>
+      <article class="card job reveal">
+        <div class="job-date">August 2020 — August 2021<br>Mysore, India</div>
+        <div><h3>Institution’s Innovation Council, JSSSTU</h3><div class="role">Head of Organizing Committee</div><p>Compeered and organized university talks and competitions, including the university’s first 24-hour hackathon.</p></div>
+      </article>
+      <article class="card job reveal">
+        <div class="job-date">June 2019 — July 2019<br>Mysore, India</div>
+        <div><h3>BEML Ltd.</h3><div class="role">Production Intern</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-heading reveal">
+      <h2>Selected projects.</h2>
+      <p>Real-world applications built around workflows, data, and people.</p>
+    </div>
+    <div class="project-grid">
+      <article class="card project reveal">
+        <div class="project-top"><div class="project-symbol" aria-hidden="true">⌁</div></div>
+        <div class="project-body">
+          <div class="card-kicker">01 · Fintech / Operations</div>
+          <h3>Fuel Station Bookkeeping</h3>
+          <p>Credit tracking for fuel loans, discount settings, financial reporting, transaction analytics, and agent attendance reports.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">Express</span><span class="chip">PostgreSQL</span></div>
+        </div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><div class="project-symbol" aria-hidden="true">▦</div></div>
+        <div class="project-body">
+          <div class="card-kicker">02 · Enterprise</div>
+          <h3>Bank Parking Management</h3>
+          <p>Real-time parking management with authentication, vehicle tracking, and SQL-based parking-density heat maps.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">Express</span><span class="chip">SQL Server</span><span class="chip">WebSockets</span></div>
+        </div>
+      </article>
+      <article class="card project reveal">
+        <div class="project-top"><div class="project-symbol" aria-hidden="true">✳</div></div>
+        <div class="project-body">
+          <div class="card-kicker">03 · Marketplace</div>
+          <h3>Cosplay P2P Marketplace</h3>
+          <p>A multi-party marketplace with structured order workflows, integrated payments, notifications, and media uploads.</p>
+          <div class="chips"><span class="chip">NestJS</span><span class="chip">PostgreSQL</span><span class="chip">Firebase</span><span class="chip">Stripe</span><span class="chip">S3</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-heading reveal">
+      <h2>Learning, always.</h2>
+      <p>A foundation in engineering, strengthened by software development training.</p>
+    </div>
+    <div class="edu-grid">
+      <article class="card edu reveal">
+        <div class="card-kicker">2022 — 2024</div>
+        <h3>Scaler</h3><p>Java Full Stack Development</p>
+      </article>
+      <article class="card edu reveal">
+        <div class="card-kicker">2017 — 2021</div>
+        <h3>Sri Jayachamarajendra College of Engineering</h3><p>Bachelor’s degree, Industrial and Production Engineering</p>
+      </article>
+    </div>
+    <article class="card reveal" style="margin-top:16px">
+      <div class="card-kicker">Certifications</div>
+      <h3>Continuous learning</h3>
+      <div class="cert-list">
+        <div class="cert"><span class="check">✓</span><span>The Data Scientist’s Toolbox</span></div>
+        <div class="cert"><span class="check">✓</span><span>Getting and Cleaning Data</span></div>
+        <div class="cert"><span class="check">✓</span><span>Machine Learning Foundations: A Case Study Approach</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-panel reveal">
+      <div class="eyebrow">Have something in mind?</div>
+      <h2>Let’s build<br>something good.</h2>
+      <p>For opportunities, collaborations, or a conversation about software and product engineering, feel free to reach out.</p>
+      <div class="contact-links">
+        <a class="button primary" href="mailto:vishokprasad27@gmail.com">vishokprasad27@gmail.com ↗</a>
+        <a class="button secondary" href="https://www.linkedin.com/in/vishok-g-054b01173/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><span>© <span id="year"></span> Vishok G</span><span>Designed with clarity. Built with care.</span><a href="#top">Back to top ↑</a></footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(item => observer.observe(item));
+  } else {
+    items.forEach(item => item.classList.add('visible'));
+  }
+</script>
+</body>
+</html>
